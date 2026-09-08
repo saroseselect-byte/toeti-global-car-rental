@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "toeti-global-car-rental",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-01",
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "toeti-production",
+    "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+    "migrations_dir": "migrations"
+  }]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "toeti-global-car-rental",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --test",
+    "check": "node --check src/index.js"
+  },
+  "devDependencies": { "wrangler": "^4.34.0" }
+}
