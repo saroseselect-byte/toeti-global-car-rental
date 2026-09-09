@@ -6,7 +6,7 @@
   "d1_databases": [{
     "binding": "DB",
     "database_name": "toeti-production",
-    "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+    "database_id": "7bd7df9d-5625-4ba9-a0f3-3fc83ab05982",
     "migrations_dir": "migrations"
   }]
 }
