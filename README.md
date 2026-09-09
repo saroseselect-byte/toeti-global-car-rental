@@ -1,9 +1,24 @@
-# TOETI Global Car Rental — P1
+# TOETI supplier-ready booking core
 
-Cloudflare Worker MVP for Zanzibar/Maluda request-to-book rentals.
+One Cloudflare Worker + D1 application for Rental Cars and Tours & Experiences.
 
-## Local development
+## Verified locally
 
-Run `npm install`, `npm test`, then `npm run dev`. Before deployment, create a Cloudflare D1 database, set its ID in `wrangler.jsonc`, apply `migrations/0001_initial.sql`, and deploy.
+- Customer storefront, destination and offer pages
+- Secure supplier review, change request, revision and approval
+- Public visibility only after supplier approval
+- Request-to-book with separate customer and supplier tokens
+- Manual/email availability adapter states
+- Supplier accept/decline and customer status page
+- Audit and learning events
+- End-to-end Car and Experience tests
 
-No live payments are enabled. See `docs/CURRENT_STATE.md` for exact status and blockers.
+## Commands
+
+- `npm test`
+- `npm run check`
+- `npx wrangler d1 migrations apply DB --local`
+- `npm run dev`
+- `npm run deploy`
+
+Read `docs/CURRENT_STATE.md` before representing any capability as live.

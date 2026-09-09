@@ -6,11 +6,11 @@ Source repository: `saroseselect-byte/toeti-global-car-rental`. No secrets belon
 
 ## Cloudflare
 
-Required for launch: Workers and D1. Create database `toeti-production`, replace the D1 ID placeholder in `wrangler.jsonc`, apply migrations, then deploy. Use separate preview/production configuration before accepting real customers.
+Required for launch: Workers and D1. Create database `toeti-production`, replace the D1 ID placeholder in `wrangler.jsonc`, apply both migrations, then deploy. No Cloudflare credential is available in the current build environment, so production remains unverified.
 
 ## Supplier communication
 
-Not connected. Next adapter requires a sender account, API/OAuth credentials, least-privilege send/read scopes, and webhook or scheduled reply ingestion. Supplier availability remains a human-confirmed request flow for P1.
+Manual decisions work through secure supplier links. Email creates an auditable queued communication record but does not send externally. WhatsApp and supplier APIs remain explicitly NOT YET VERIFIED.
 
 ## Payments
 

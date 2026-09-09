@@ -1,23 +1,33 @@
 # Current state
 
-## Exists and works
+## VERIFIED WORKING (local build and D1-compatible test runtime)
 
-- Responsive Zanzibar car-rental inventory page with seven confirmed Maluda vehicles.
-- Confirmed pickup, deposit and cancellation information; insurance and excess remain pending.
-- Request-to-book form and server-side validation, pricing, secure internal ID/token and public reference.
-- D1 schema for bookings, events, audit records, commercial terms, routes and transactions.
-- Controlled booking state machine and payment-router interface with no fake live provider.
-- Automated domain tests.
+- Responsive customer homepage for Rental Cars and Tours & Experiences.
+- Zanzibar destination page, offer cards, offer detail and booking form.
+- Seven Maluda vehicle prices in USD from the existing verified inventory seed.
+- Maluda comprehensive-insurance excess/deductible updated to TZS 350,000; third-party-only minor damage language retained as supplier-provided information.
+- Clearly labelled example Experience; no claim that it is real supplier inventory.
+- One unified Destination → Supplier → Offer → Availability → Booking → Communication → Audit/Learning model.
+- Secure random supplier review tokens, change requests, versioned revision, approval timestamp and LIVE gate.
+- Draft or unapproved database offers return 404 and never appear publicly.
+- Request-to-book creates AWAITING_SUPPLIER and never claims instant booking.
+- Separate random customer-status and supplier-decision tokens.
+- Supplier accepts or declines; customer status and booking events update.
+- Manual adapter active; email adapter records a queued communication only.
+- Audit and learning events for draft, review, change, revision, approval, live, booking and supplier outcome.
+- Nine automated tests pass, including complete P1 Car and P2 Experience flows with restart-safe SQL persistence semantics.
+- Both migrations apply successfully to local D1.
 
-## Incomplete / blocked
+## NOT YET VERIFIED
 
-- Production D1 database has not been created or bound; `wrangler.jsonc` contains a deliberate placeholder.
-- No production deployment URL is verified yet.
-- Supplier notifications and reply processing are not connected.
-- No payment provider, checkout, webhook, KYC, commission, payout, refund or reconciliation is live.
-- Maluda insurance coverage and excess/deductible await supplier confirmation.
-- Commission is deliberately unset and must be configured per signed supplier agreement.
+- Production D1 database and public Cloudflare deployment. This environment has no Cloudflare API token/account binding and `wrangler.jsonc` deliberately retains a database-ID placeholder.
+- Actual outbound supplier email delivery or inbound reply processing.
+- WhatsApp integration.
+- Supplier-specific API integration, including RF Rent-a-Car Azores documentation/authentication.
+- Payment, checkout, KYC, commission, payout, refund or reconciliation.
+- Real Experience inventory or supplier approval.
+- Real customer booking traffic.
 
-## Integrations
+## Integrity rule
 
-GitHub repository access is available. Cloudflare account/database/deployment access has not been established in this build environment.
+Only the first section may be described as verified working, and only in the stated local/test scope. No production URL or external integration may be claimed until separately deployed and tested.
