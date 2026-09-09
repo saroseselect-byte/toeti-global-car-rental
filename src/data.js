@@ -1,5 +1,6 @@
 export const supplier = {
   id: 'sup_maluda', slug: 'maluda-car-rental', name: 'Maluda Car Rental', country: 'Tanzania',
+  publicName: 'Demo Zanzibar car supplier', publicStatus: 'AWAITING_REAL_SUPPLIER_APPROVAL',
   destination: 'Zanzibar', confirmationMethod: 'MANUAL', bookingMode: 'REQUEST_TO_BOOK'
 };
 
@@ -10,9 +11,9 @@ export const vehicles = [
   ['veh_prado','Toyota Prado',8000]
 ].map(([id,title,dailyRateCents]) => ({
   id, supplierId: supplier.id, type: 'CAR_RENTAL', title,
-  description: 'Local Zanzibar rental vehicle. Availability is confirmed by the supplier after your request.',
+  description: 'Demo Zanzibar rental vehicle. Real availability is confirmed only after supplier activation.',
   location: 'Zanzibar, Tanzania', currency: 'USD', dailyRateCents,
-  status: 'DEMO_APPROVED', availabilityMethod: 'MANUAL',
+  status: 'DEMO_APPROVED', isDemo: true, availabilityMethod: 'MANUAL',
   terms: {
     deposit: 'No deposit required.', insurance: 'Comprehensive insurance available.',
     excess: 'TZS 350,000 excess/deductible for comprehensive insurance.',
