@@ -5,12 +5,16 @@ export const supplier = {
 };
 
 export const vehicles = [
-  ['veh_escudo','Suzuki Escudo',2500], ['veh_rav4','Toyota RAV4',3000],
-  ['veh_juke','Nissan Juke',3000], ['veh_rav4_miss','Toyota RAV4 (Miss Tanzania edition)',3500],
-  ['veh_harrier','Toyota Harrier',4000], ['veh_alphard','Toyota Alphard',4000],
-  ['veh_prado','Toyota Prado',8000]
-].map(([id,title,dailyRateCents]) => ({
+  ['veh_escudo','Suzuki Escudo',2500,'https://res.cloudinary.com/cpp8vjzo/image/upload/v1785964842/maluda-car-rental/cars/n4lw7ex11f75etw3eh3a.webp'],
+  ['veh_rav4','Toyota RAV4',3000,'https://res.cloudinary.com/cpp8vjzo/image/upload/v1785964008/maluda-car-rental/cars/t9mydoeslzap1kqbuodc.webp'],
+  ['veh_juke','Nissan Juke',3000,'https://res.cloudinary.com/cpp8vjzo/image/upload/v1785964428/maluda-car-rental/cars/kbznoabd38gerhtc86cy.webp'],
+  ['veh_rav4_miss','Toyota RAV4 (Miss Tanzania edition)',3500,'https://res.cloudinary.com/cpp8vjzo/image/upload/v1787640453/maluda-car-rental/cars/vl2h8eeo9nj2v5draf5e.webp'],
+  ['veh_harrier','Toyota Harrier',4000,'https://res.cloudinary.com/cpp8vjzo/image/upload/v1786017088/maluda-car-rental/cars/prmh5tflv0qpafqrzk4p.webp'],
+  ['veh_alphard','Toyota Alphard',4000,'https://res.cloudinary.com/cpp8vjzo/image/upload/v1786015621/maluda-car-rental/cars/erggeocmkcjm5hettsuk.webp'],
+  ['veh_prado','Toyota Prado',8000,'https://res.cloudinary.com/cpp8vjzo/image/upload/v1786015986/maluda-car-rental/cars/yvbdca8pakpu5jpobhoj.webp']
+].map(([id,title,dailyRateCents,imageUrl]) => ({
   id, supplierId: supplier.id, type: 'CAR_RENTAL', title,
+  imageUrl, imageSource: 'Maluda official fleet website',
   description: 'Demo Zanzibar rental vehicle. Real availability is confirmed only after supplier activation.',
   location: 'Zanzibar, Tanzania', currency: 'USD', dailyRateCents,
   status: 'DEMO_APPROVED', isDemo: true, availabilityMethod: 'MANUAL',
