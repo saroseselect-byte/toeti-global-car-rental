@@ -11,7 +11,7 @@ export default {
   async fetch(request, env, ctx) {
     const response = await app.fetch(request, env, ctx);
     const url = new URL(request.url);
-    const isZanzibar = url.pathname === '/destination/zanzibar' || url.pathname.startsWith('/offer/');
+    const isZanzibar = url.pathname === '/destination/zanzibar' || url.pathname.startsWith('/offers/');
     if (request.method !== 'GET' || !isZanzibar) return response;
     const contentType = response.headers.get('content-type') || '';
     if (!contentType.includes('text/html')) return response;
