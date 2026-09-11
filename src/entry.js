@@ -1,25 +1,33 @@
 import app from './index.js';
 import { supplierPreview, supplierCss } from './supplier-pages.js';
+import { globalExplore, globalExploreCss } from './global-explore.js';
 
 const spicePhoto='https://commons.wikimedia.org/wiki/Special:Redirect/file/People_at_the_marketplace_of_the_Stone_Town_-_Zanzibar_(22227853516).jpg';
 const badPradoPhoto='https://res.cloudinary.com/cpp8vjzo/image/upload/v1786015986/maluda-car-rental/cars/yvbdca8pakpu5jpobhoj.webp';
 const zanzibarCss=`.destination-hero{position:relative;min-height:520px;border-radius:26px;overflow:hidden;margin-bottom:24px;background:#0b172a;color:#fff;display:flex;align-items:flex-end;isolation:isolate;box-shadow:0 20px 55px rgba(8,27,55,.18)}.destination-hero:before{content:'';position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(4,14,28,.84),rgba(4,14,28,.18)),url('https://upload.wikimedia.org/wikipedia/commons/8/8d/Nungwi_%282010-011-1318-T%29.jpg');background-size:cover;background-position:center 48%;z-index:-2}.destination-hero:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,14,28,.48),transparent 48%);z-index:-1}.destination-hero__content{padding:clamp(28px,5vw,58px);max-width:780px}.destination-hero__eyebrow{display:inline-flex;padding:7px 11px;border-radius:999px;background:#ffffff29;border:1px solid #ffffff42;font-size:12px;font-weight:900;letter-spacing:.12em}.destination-hero h1{font-size:clamp(44px,7vw,82px);line-height:.96;letter-spacing:-.055em;margin:18px 0 14px}.destination-hero p{font-size:clamp(17px,2vw,21px);line-height:1.6;color:#f3f7fb;max-width:660px}.destination-hero__actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.destination-hero__credit{position:absolute;right:16px;bottom:12px;font-size:11px;color:#fff;background:#0006;padding:6px 8px;border-radius:8px}.destination-hero__credit a{text-decoration:underline;color:#fff}body{background:linear-gradient(180deg,#f7fbfc,#fff9ef 42%,#f8efe0);color:#092642}.card{border-color:#e4d4bc!important;box-shadow:0 14px 34px rgba(70,52,24,.11)!important}.card-body{background:linear-gradient(155deg,#fff9ed,#f8ead4)!important;border-top:1px solid #ead8bb}.card-body h3{color:#08233e!important;font-weight:900}.card-body .muted{color:#526574!important}.card-body .price{color:#0a5f63!important}.card-body .btn{background:linear-gradient(135deg,#138e94,#08747c)!important}.carvisual{background:linear-gradient(145deg,#d8f1ef,#f7e3bf)!important}.panel,.details,.detail,.region-intro{background:#fffcf6!important;border-color:#eadfce!important}.notice,.warning{background:linear-gradient(90deg,#fff4d5,#fff9eb)!important;border-left-color:#e39120!important}.prado-safe{height:210px;display:grid;place-items:center;text-align:center;padding:24px;background:linear-gradient(145deg,#0d6870,#159aa0 55%,#efb45c);color:#fff;font-size:24px;font-weight:950}.prado-safe small{display:block;font-size:12px;margin-top:8px;letter-spacing:.12em}.experience-visual{position:relative}.experience-visual:after{content:'CULTURAL EXPERIENCE';position:absolute;left:14px;bottom:14px;padding:7px 10px;border-radius:999px;background:#07182fd6;color:#fff;font-size:11px;font-weight:900;letter-spacing:.09em}@media(max-width:700px){.destination-hero{min-height:500px}.destination-hero__content{padding:28px 22px 58px}.prado-safe{height:230px}}`;
 const heroMarkup=`<section class="destination-hero"><div class="destination-hero__content"><span class="destination-hero__eyebrow">TOETI ZANZIBAR · TANZANIA</span><h1>Explore Zanzibar with TOETI</h1><p>From Stone Town to the turquoise coast, discover Zanzibar with trusted local rental cars and experiences — with local suppliers keeping final control of availability.</p><div class="destination-hero__actions"><a class="btn alt" href="/destination/zanzibar?type=CAR_RENTAL">Rental Cars</a><a class="btn" href="/destination/zanzibar?type=EXPERIENCE">Experiences</a></div></div><div class="destination-hero__credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Nungwi_(2010-011-1318-T).jpg">Moongateclimber / Wikimedia Commons</a> · CC BY 3.0</div></section>`;
 
+function shellWith(shell,main,css){return shell.replace(/<main>[\s\S]*<\/main>/,main).replace('</style>',`${css}</style>`).replace('href="/destination/zanzibar">Explore','href="/explore">Explore');}
+
 export default {async fetch(request,env,ctx){
  const url=new URL(request.url);
+ if(request.method==='GET'&&(url.pathname==='/'||url.pathname==='/explore')){
+   const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx);let base=await shell.text();
+   base=shellWith(base,globalExplore(),globalExploreCss);
+   const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org'));h.set('cache-control','no-store');return new Response(base,{status:200,headers:h});
+ }
  const preview=supplierPreview(url.pathname);
  let response;
  if(request.method==='GET'&&preview){
-   const shell=await app.fetch(new Request(new URL('/',url),request),env,ctx); let base=await shell.text();
-   base=base.replace(/<main>[\s\S]*<\/main>/,preview).replace('</style>',`${supplierCss}</style>`);
+   const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx); let base=await shell.text();
+   base=shellWith(base,preview,supplierCss);
    const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org'));h.set('cache-control','no-store');return new Response(base,{status:200,headers:h});
  }
  response=await app.fetch(request,env,ctx);
  const isZanzibar=url.pathname==='/destination/zanzibar'||url.pathname.startsWith('/offers/');
  if(request.method!=='GET'||!isZanzibar)return response;
  const ct=response.headers.get('content-type')||'';if(!ct.includes('text/html'))return response;
- let body=await response.text();body=body.replace('</style>',`${zanzibarCss}</style>`);
+ let body=await response.text();body=body.replace('</style>',`${zanzibarCss}</style>`).replace('href="/destination/zanzibar">Explore','href="/explore">Explore');
  if(url.pathname==='/destination/zanzibar'){
   body=body.replace(/<section class="welcome">[\s\S]*?<\/section>/,heroMarkup);
   body=body.replace(`<img src="${badPradoPhoto}" alt="Toyota Prado in Zanzibar" loading="lazy">`,`<div class="prado-safe">TOYOTA PRADO<small>ZANZIBAR · SUPPLIER PHOTO UPDATE</small></div>`);
