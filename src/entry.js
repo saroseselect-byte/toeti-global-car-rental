@@ -13,7 +13,7 @@ export default {async fetch(request,env,ctx){
  if(request.method==='GET'&&preview){
    const shell=await app.fetch(new Request(new URL('/',url),request),env,ctx); let base=await shell.text();
    base=base.replace(/<main>[\s\S]*<\/main>/,preview).replace('</style>',`${supplierCss}</style>`);
-   const h=new Headers(shell.headers);h.set('cache-control','no-store');return new Response(base,{status:200,headers:h});
+   const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org'));h.set('cache-control','no-store');return new Response(base,{status:200,headers:h});
  }
  response=await app.fetch(request,env,ctx);
  const isZanzibar=url.pathname==='/destination/zanzibar'||url.pathname.startsWith('/offers/');
