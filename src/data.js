@@ -1,6 +1,6 @@
 export const supplier = {
   id: 'sup_maluda', slug: 'maluda-car-rental', name: 'Maluda Car Rental', country: 'Tanzania',
-  publicName: 'Maluda Car Rental', publicStatus: 'AWAITING_REAL_SUPPLIER_APPROVAL',
+  publicName: 'Maluda Car Rental', publicStatus: 'APPROVED_FOR_LIVE_ACTIVATION',
   destination: 'Zanzibar', confirmationMethod: 'MANUAL', bookingMode: 'REQUEST_TO_BOOK'
 };
 
@@ -15,9 +15,9 @@ export const vehicles = [
 ].map(([id,title,dailyRateCents,imageUrl]) => ({
   id, supplierId: supplier.id, type: 'CAR_RENTAL', title,
   imageUrl, imageSource: imageUrl ? 'Maluda supplied/official fleet image' : 'Safe placeholder pending verified Maluda vehicle photo',
-  description: 'Maluda Zanzibar rental vehicle prepared for supplier review. Real availability is confirmed by Maluda before customer confirmation.',
+  description: 'Maluda Zanzibar rental vehicle approved by the supplier for TOETI activation. Real availability is confirmed by Maluda before customer confirmation.',
   location: 'Zanzibar, Tanzania', currency: 'USD', dailyRateCents,
-  status: 'PENDING_SUPPLIER_APPROVAL', isDemo: true, availabilityMethod: 'MANUAL',
+  status: 'SUPPLIER_APPROVED', isDemo: false, availabilityMethod: 'MANUAL',
   terms: {
     deposit: 'No deposit required.',
     insurance: 'Insurance cover depends on the vehicle. For vehicles with comprehensive insurance, the insurer covers the remaining assessed damage after the renter excess.',
@@ -25,7 +25,9 @@ export const vehicles = [
     thirdParty: 'For vehicles with third-party-only insurance, minor scratches/small damages are the customer’s responsibility.',
     pickup: 'Free pickup/drop-off in Stone Town, Zanzibar Airport and Zanzibar Seaport. Outside Stone Town: USD 10 one-way.',
     cancellation: 'Free cancellation up to 48 hours before pickup. Cancellations are subject to a 3.5% payment-provider fee.',
-    driverRequirements: 'To be confirmed for the selected vehicle.', mileage: 'To be confirmed for the selected vehicle.',
+    driverRequirements: 'A Zanzibar local driving permit is required for self-drive. Maluda states that customers must provide a valid driving licence and passport. The permit costs USD 25. Permit processing/collection details are confirmed with Maluda during the request-to-book process before customer confirmation.',
+    drivingPermit: 'Required for self-drive in Zanzibar. Valid driving licence + passport required. USD 25 permit fee per driver. TOETI discloses this separately from the vehicle daily rate so there is no hidden fee.',
+    mileage: 'To be confirmed for the selected vehicle.',
     fuelPolicy: 'To be confirmed for the selected vehicle.'
   }
 }));
@@ -42,5 +44,11 @@ export const experience = {
 };
 
 export const offers = [...vehicles, experience];
-export const policies = { includedPickup: ['Stone Town','Zanzibar Airport','Zanzibar Seaport'], outsideStoneTownFeeCents: 1000,
-  outsideStoneTownFeeType: 'ONE_WAY', depositRequired: false, cancellation: 'Free cancellation up to 48 hours before pickup; 3.5% payment-provider fee applies to cancellations.' };
+export const policies = {
+  includedPickup: ['Stone Town','Zanzibar Airport','Zanzibar Seaport'],
+  outsideStoneTownFeeCents: 1000,
+  outsideStoneTownFeeType: 'ONE_WAY',
+  depositRequired: false,
+  cancellation: 'Free cancellation up to 48 hours before pickup; 3.5% payment-provider fee applies to cancellations.',
+  drivingPermit: 'Zanzibar local driving permit required for self-drive; valid driving licence and passport required; USD 25 per driver.'
+};
