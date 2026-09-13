@@ -1,12 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "toeti-global-car-rental",
-  "main": "src/entry.js",
-  "compatibility_date": "2026-09-01",
-  "d1_databases": [{
-    "binding": "DB",
-    "database_name": "toeti-production",
-    "database_id": "7bd7df9d-5625-4ba9-a0f3-3fc83ab05982",
-    "migrations_dir": "migrations"
-  }]
+  "main": "src/porto-walkers-worker.js",
+  "compatibility_date": "2026-09-01"
 }
