@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "toeti-global-car-rental",
-  "main": "src/porto-walkers-worker.js",
+  "main": "src/qa-click-wrapper.js",
   "compatibility_date": "2026-09-01"
 }
