@@ -2,6 +2,7 @@ import supplierRoutes from './tours-worldwide-worker.js';
 
 const I={
   portugal:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Coastline_and_rocks.png',
+  spain:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Mallorca_coast.jpg',
   morocco:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Agadir_city_beach,_Morocco.jpg',
   southafrica:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Cape_Town_-_Table_Mountain_from_Bloubergstrand.jpg',
   turkiye:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Istanbul_Skyline.jpg',
@@ -16,48 +17,23 @@ const I={
 
 const C=[
   ['portugal','Portugal','Portugal','Atlantic islands · historic cities','Atlantische eilanden · historische steden',[
-    ['Madeira · Chifbay','/tours/portugal/madeira/chifbay'],
-    ['Madeira · AF Rental','https://build-af-madeira-rental-review-toeti-global-car-rental.sarose.workers.dev/'],
-    ['Madeira · DG Travel','https://build-dg-travel-madeira-review-toeti-global-car-rental.sarose.workers.dev/'],
-    ['Azores · OceanEye','/tours/portugal/azores/oceaneye'],
-    ['Azores · RF Rent-a-Car','https://build-rf-azores-review-toeti-global-car-rental.sarose.workers.dev/'],
-    ['Porto · Porto Walkers','/tours/portugal/porto/porto-walkers']
+    ['Madeira · Chifbay','/tours/portugal/madeira/chifbay'],['Madeira · AF Rental','https://build-af-madeira-rental-review-toeti-global-car-rental.sarose.workers.dev/'],['Madeira · DG Travel','https://build-dg-travel-madeira-review-toeti-global-car-rental.sarose.workers.dev/'],['Azores · OceanEye','/tours/portugal/azores/oceaneye'],['Azores · RF Rent-a-Car','https://build-rf-azores-review-toeti-global-car-rental.sarose.workers.dev/'],['Porto · Porto Walkers','/tours/portugal/porto/porto-walkers']
+  ]],
+  ['spain','Spain · Mallorca','Spanje · Mallorca','Mediterranean island · coastal experiences','Mediterraan eiland · kustbeleving',[
+    ['Mallorca · Vela Mayorca','https://build-vela-mayorca-review-toeti-global-car-rental.sarose.workers.dev/']
   ]],
   ['morocco','Morocco','Marokko','Atlantic coast · Atlas routes · desert light','Atlantische kust · Atlasroutes · woestijnlicht',[
-    ['Agadir · Agadir Visite','/tours/morocco/agadir/agadir-visite'],
-    ['Essaouira · MZ Agency','https://build-mz-agency-essaouira-review-toeti-global-car-rental.sarose.workers.dev/'],
-    ['Marrakech · Marrakech Tour Operator','https://build-marrakech-tour-operator-review-toeti-global-car-rental.sarose.workers.dev/'],
-    ['Morocco · Chegaga Travel','https://build-chegaga-travel-morocco-review-toeti-global-car-rental.sarose.workers.dev/']
+    ['Agadir · Agadir Visite','/tours/morocco/agadir/agadir-visite'],['Essaouira · MZ Agency','https://build-mz-agency-essaouira-review-toeti-global-car-rental.sarose.workers.dev/'],['Marrakech · Marrakech Tour Operator','https://build-marrakech-tour-operator-review-toeti-global-car-rental.sarose.workers.dev/'],['Morocco · Chegaga Travel','https://build-chegaga-travel-morocco-review-toeti-global-car-rental.sarose.workers.dev/']
   ]],
-  ['southafrica','South Africa','Zuid-Afrika','Western Cape · private guided experiences','West-Kaap · privé-ervaringen',[
-    ['Western Cape · Cape Car Tours','/tours/south-africa/western-cape/cape-car-tours']
-  ]],
-  ['turkiye','Türkiye','Turkije','Istanbul · Bosphorus · imperial history','Istanbul · Bosporus · keizerlijke geschiedenis',[
-    ['Istanbul · Manolya Tour','/tours/turkiye/istanbul/manolya-tour']
-  ]],
-  ['czech','Czech Republic','Tsjechië','Prague · Old Town · Castle Side','Praag · Oude Stad · Kasteelzijde',[
-    ['Prague · PragueWay','/tours/czech-republic/prague/pragueway'],
-    ['Prague · Premiant','https://build-premiant-prague-premium-review-toeti-global-car-rental.sarose.workers.dev/']
-  ]],
-  ['greece','Greece','Griekenland','Crete · Mediterranean roads · island light','Kreta · mediterrane wegen · eilandlicht',[
-    ['Crete · Eurocars','https://build-eurocars-crete-review-toeti-global-car-rental.sarose.workers.dev/']
-  ]],
-  ['zanzibar','Tanzania · Zanzibar','Tanzania · Zanzibar','Indian Ocean · Zanzibar mobility','Indische Oceaan · mobiliteit op Zanzibar',[
-    ['Zanzibar · Maluda Car Rental','https://build-maluda-zanzibar-final-review-toeti-global-car-rental.sarose.workers.dev/'],
-    ['Zanzibar · Zanzibar Rentals','https://build-zanzibar-rentals-review-toeti-global-car-rental.sarose.workers.dev/']
-  ]],
-  ['indonesia','Indonesia · Lombok','Indonesië · Lombok','Island roads · beaches · local mobility','Eilandwegen · stranden · lokale mobiliteit',[
-    ['Lombok · Lombok Rentals Indonesia','https://build-lombok-rentals-indonesia-review-toeti-global-car-rental.sarose.workers.dev/']
-  ]],
-  ['fiji','Fiji','Fiji','Pacific islands · local mobility','Pacifische eilanden · lokale mobiliteit',[
-    ['Fiji · NCH Rentals','https://build-nch-fiji-review-toeti-global-car-rental.sarose.workers.dev/']
-  ]],
-  ['mauritius','Mauritius','Mauritius','Indian Ocean · premium island mobility','Indische Oceaan · premium eilandmobiliteit',[
-    ['Mauritius · WST Car Hire','https://build-wst-mauritius-review-toeti-global-car-rental.sarose.workers.dev/']
-  ]],
-  ['samoa','Samoa','Samoa','Pacific roads · island mobility','Pacifische wegen · eilandmobiliteit',[
-    ['Samoa · Golden Way Rentals','https://build-golden-way-samoa-review-toeti-global-car-rental.sarose.workers.dev/']
-  ]]
+  ['southafrica','South Africa','Zuid-Afrika','Western Cape · private guided experiences','West-Kaap · privé-ervaringen',[[ 'Western Cape · Cape Car Tours','/tours/south-africa/western-cape/cape-car-tours']]],
+  ['turkiye','Türkiye','Turkije','Istanbul · Bosphorus · imperial history','Istanbul · Bosporus · keizerlijke geschiedenis',[[ 'Istanbul · Manolya Tour','/tours/turkiye/istanbul/manolya-tour']]],
+  ['czech','Czech Republic','Tsjechië','Prague · Old Town · Castle Side','Praag · Oude Stad · Kasteelzijde',[[ 'Prague · PragueWay','/tours/czech-republic/prague/pragueway'],['Prague · Premiant','https://build-premiant-prague-premium-review-toeti-global-car-rental.sarose.workers.dev/']]],
+  ['greece','Greece','Griekenland','Crete · Mediterranean roads · island light','Kreta · mediterrane wegen · eilandlicht',[[ 'Crete · Eurocars','https://build-eurocars-crete-review-toeti-global-car-rental.sarose.workers.dev/']]],
+  ['zanzibar','Tanzania · Zanzibar','Tanzania · Zanzibar','Indian Ocean · Zanzibar mobility','Indische Oceaan · mobiliteit op Zanzibar',[[ 'Zanzibar · Maluda Car Rental','https://build-maluda-zanzibar-final-review-toeti-global-car-rental.sarose.workers.dev/'],['Zanzibar · Zanzibar Rentals','https://build-zanzibar-rentals-review-toeti-global-car-rental.sarose.workers.dev/']]],
+  ['indonesia','Indonesia · Lombok','Indonesië · Lombok','Island roads · beaches · local mobility','Eilandwegen · stranden · lokale mobiliteit',[[ 'Lombok · Lombok Rentals Indonesia','https://build-lombok-rentals-indonesia-review-toeti-global-car-rental.sarose.workers.dev/']]],
+  ['fiji','Fiji','Fiji','Pacific islands · local mobility','Pacifische eilanden · lokale mobiliteit',[[ 'Fiji · NCH Rentals','https://build-nch-fiji-review-toeti-global-car-rental.sarose.workers.dev/']]],
+  ['mauritius','Mauritius','Mauritius','Indian Ocean · premium island mobility','Indische Oceaan · premium eilandmobiliteit',[[ 'Mauritius · WST Car Hire','https://build-wst-mauritius-review-toeti-global-car-rental.sarose.workers.dev/']]],
+  ['samoa','Samoa','Samoa','Pacific roads · island mobility','Pacifische wegen · eilandmobiliteit',[[ 'Samoa · Golden Way Rentals','https://build-golden-way-samoa-review-toeti-global-car-rental.sarose.workers.dev/']]]
 ];
 
 const S=`*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f7f1e7;color:#13212a;font-family:Inter,Arial,sans-serif}a{color:inherit}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;position:sticky;top:0;z-index:20;background:#f7f1e7ed;backdrop-filter:blur(16px);border-bottom:1px solid #ded5c8}.brand{font-weight:950;letter-spacing:.18em;text-decoration:none;font-size:13px}.right{display:flex;gap:20px;align-items:center}.right>a{text-decoration:none;font-weight:800}.lang button{border:0;background:none;font-weight:900;cursor:pointer;padding:8px}.hero{min-height:82vh;display:flex;align-items:end;padding:7vw 6vw;color:white;background:linear-gradient(90deg,#07141be6,#07141b42),url('${I.portugal}') center/cover}.hero>div{max-width:1000px}.hero h1,.country h2{font-family:Georgia,serif;font-weight:400;letter-spacing:-.045em}.hero h1{font-size:clamp(58px,8vw,112px);line-height:.9;margin:14px 0 22px}.hero p{font-size:21px;max-width:760px;line-height:1.6}.country{min-height:76vh;padding:6vw;display:flex;align-items:end;color:#fff;background-size:cover;background-position:center;position:relative;isolation:isolate}.country:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#08151fe8,#08151f68 58%,transparent);z-index:-1}.inner{max-width:980px}.ey{font-size:11px;font-weight:950;letter-spacing:.2em;text-transform:uppercase}.country h2{font-size:clamp(55px,8vw,102px);line-height:.92;margin:12px 0 20px}.country p{font-size:19px;line-height:1.6;max-width:760px}.links{display:flex;flex-wrap:wrap;gap:11px;margin-top:24px}.btn{padding:14px 18px;border-radius:999px;background:#f5c96c;color:#12202a;text-decoration:none;font-weight:950;box-shadow:0 10px 30px #0002}.footer{padding:50px 6vw;background:#111d24;color:#dce3e5}.nl{display:none}body[data-lang=nl] .en{display:none}body[data-lang=nl] .nl{display:inline}body[data-lang=nl] .block.nl{display:block}.block.nl{display:none}@media(max-width:700px){.hero,.country{min-height:68vh;padding:36px 22px}.hero h1,.country h2{font-size:54px}.right>a{display:none}.links{gap:8px}.btn{width:100%;justify-content:center;text-align:center}}`;
