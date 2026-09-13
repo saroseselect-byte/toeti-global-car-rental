@@ -1,0 +1,1 @@
+Execution note: supplier-facing pages must use public/customer language only. Internal labels such as review, pilot, supplier approved, not live, activation status, waiting on supplier, technical placeholders or database fields must not appear in customer-facing page copy. Those states belong in TOETI internal docs/email only.
