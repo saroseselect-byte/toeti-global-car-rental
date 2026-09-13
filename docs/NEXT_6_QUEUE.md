@@ -1,0 +1,1 @@
+Next queue after current six: Zanzibar Rentals, Eurocars Crete, DG Travel Madeira, Vela Mayorca, Chegaga Travel Morocco, Marrakech Tour Operator. Apply same rule: read thread, inspect existing branch/page, fix only missing 80/20 items, verify, then return ball to supplier.
