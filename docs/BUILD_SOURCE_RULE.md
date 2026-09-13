@@ -1,0 +1,1 @@
+For new supplier pages, use supplier-owned/current public source information and supplier-provided assets where available. Do not infer inventory or commercial terms from destination marketing pages. Destination photography may support the visual design but must not be presented as supplier inventory.
