@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "toeti-global-car-rental",
-  "main": "src/entry.js",
+  "main": "src/nch-fiji-worker.js",
   "compatibility_date": "2026-09-01",
   "d1_databases": [{
     "binding": "DB",
