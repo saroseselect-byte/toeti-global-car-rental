@@ -1,6 +1,7 @@
 import app from './index.js';
 import { supplierPreview, supplierCss } from './supplier-pages.js';
 import { globalExplore, globalExploreCss } from './global-explore.js';
+import { capeCarToursPage } from './cape-car-tours-worker.js';
 
 const spicePhoto='https://commons.wikimedia.org/wiki/Special:Redirect/file/People_at_the_marketplace_of_the_Stone_Town_-_Zanzibar_(22227853516).jpg';
 const badPradoPhoto='https://res.cloudinary.com/cpp8vjzo/image/upload/v1786015986/maluda-car-rental/cars/yvbdca8pakpu5jpobhoj.webp';
@@ -11,6 +12,7 @@ function shellWith(shell,main,css){return shell.replace(/<main>[\s\S]*<\/main>/,
 
 export default {async fetch(request,env,ctx){
  const url=new URL(request.url);
+ if(request.method==='GET'&&['/supplier/cape-car-tours','/experiences/cape-car-tours'].includes(url.pathname))return new Response(capeCarToursPage(),{status:200,headers:{'content-type':'text/html; charset=utf-8','cache-control':'no-store','x-robots-tag':'noindex, nofollow'}});
  if(request.method==='GET'&&(url.pathname==='/'||url.pathname==='/explore')){
    const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx);let base=await shell.text();
    base=shellWith(base,globalExplore(),globalExploreCss);
