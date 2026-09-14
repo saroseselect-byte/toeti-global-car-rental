@@ -16,14 +16,14 @@ export default {async fetch(request,env,ctx){
  if(request.method==='GET'&&(url.pathname==='/'||url.pathname==='/explore')){
    const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx);let base=await shell.text();
    base=shellWith(base,globalExplore(),globalExploreCss);
-   const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org'));h.set('cache-control','no-store');return new Response(base,{status:200,headers:h});
+   const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org https://2.bp.blogspot.com https://extraguide.ru https://www.praha1.cz https://www.thewildlifediaries.com https://media.interparkcdn.net https://img.topky.sk https://media1.thrillophilia.com https://cdn.getyourguide.com https://www.vamos-viajando.com https://www.pelago.com https://res.klook.com https://cdn.easyterra.com https://african-wanderlust.com'));h.set('cache-control','no-store');return new Response(base,{status:200,headers:h});
  }
  const preview=supplierPreview(url.pathname);
  let response;
  if(request.method==='GET'&&preview){
    const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx); let base=await shell.text();
    base=shellWith(base,preview,supplierCss);
-   const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org'));h.set('cache-control','no-store');return new Response(base,{status:200,headers:h});
+   const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org https://2.bp.blogspot.com https://extraguide.ru https://www.praha1.cz https://www.thewildlifediaries.com https://media.interparkcdn.net https://img.topky.sk https://media1.thrillophilia.com https://cdn.getyourguide.com https://www.vamos-viajando.com https://www.pelago.com https://res.klook.com https://cdn.easyterra.com https://african-wanderlust.com'));h.set('cache-control','no-store');return new Response(base,{status:200,headers:h});
  }
  response=await app.fetch(request,env,ctx);
  const isZanzibar=url.pathname==='/destination/zanzibar'||url.pathname.startsWith('/offers/');
@@ -36,5 +36,5 @@ export default {async fetch(request,env,ctx){
   body=body.replace('<div class="carvisual">TOUR</div><div class="card-body">',`<div class="carvisual experience-visual"><img src="${spicePhoto}" alt="Stone Town cultural experience in Zanzibar" loading="lazy"></div><div class="card-body">`);
  }
  if(url.pathname.includes('veh_prado'))body=body.replace(`<img src="${badPradoPhoto}"`,`<span class="prado-safe">TOYOTA PRADO<small>ZANZIBAR · SUPPLIER PHOTO UPDATE</small></span><img style="display:none" src="${badPradoPhoto}"`);
- const h=new Headers(response.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org'));h.set('cache-control','no-store');return new Response(body,{status:response.status,statusText:response.statusText,headers:h});
+ const h=new Headers(response.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org https://2.bp.blogspot.com https://extraguide.ru https://www.praha1.cz https://www.thewildlifediaries.com https://media.interparkcdn.net https://img.topky.sk https://media1.thrillophilia.com https://cdn.getyourguide.com https://www.vamos-viajando.com https://www.pelago.com https://res.klook.com https://cdn.easyterra.com https://african-wanderlust.com'));h.set('cache-control','no-store');return new Response(body,{status:response.status,statusText:response.statusText,headers:h});
 }};
