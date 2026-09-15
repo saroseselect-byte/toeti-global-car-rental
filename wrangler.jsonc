@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "build-marrakech-tour-operator-review-toeti-global-car-rental",
+  "name": "build-marrakech-tour-review",
   "main": "src/qa-click-wrapper.js",
   "compatibility_date": "2026-09-01",
   "d1_databases": [{
