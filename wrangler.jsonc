@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "build-manolya-istanbul-unique-review-toeti-global-car-rental",
-  "main": "src/qa-click-wrapper.js",
+  "main": "src/entry.js",
   "compatibility_date": "2026-09-01",
   "d1_databases": [{
     "binding": "DB",
