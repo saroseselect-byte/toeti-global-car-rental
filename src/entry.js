@@ -1,4 +1,3 @@
-[Reading 47 lines from start (total: 47 lines, 0 remaining)]
 
 import maluda from './maluda-zanzibar-final-worker.js';
 import app from './index.js';
@@ -47,5 +46,3 @@ export default {async fetch(request,env,ctx){
  if(url.pathname.includes('veh_prado'))body=body.replace(`<img src="${badPradoPhoto}"`,`<span class="prado-safe">TOYOTA PRADO<small>ZANZIBAR · SUPPLIER PHOTO UPDATE</small></span><img style="display:none" src="${badPradoPhoto}"`);
  const h=new Headers(response.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org'));h.set('cache-control','no-store');return new Response(body,{status:response.status,statusText:response.statusText,headers:h});
 }};
-
-[executed on device: linux-HP-ProDesk-400-G4-SFF (32dd76c3-704d-496f-9124-acf857014958)]
