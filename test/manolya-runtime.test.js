@@ -10,4 +10,5 @@ test('Manolya customer runtime removes internal supplier and approval language',
   assert.doesNotMatch(visibleText, /\b(?:supplier|approval|inventory|pilot|commission|QA)\b/i);
   assert.doesNotMatch(visibleText, /(?:€|\$|£)\s?\d|\bavailable today\b/i);
   assert.match(visibleText, /Final details remain confirmed during the request/i);
+  assert.doesNotMatch(html, /header,\.hero,\[class\*=hero\]\{min-height:58vh/i);
 });
