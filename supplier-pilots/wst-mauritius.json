@@ -1,0 +1,36 @@
+{
+  "supplier": "WST Car Hire Ltd",
+  "destination": "Mauritius",
+  "status": "REVIEW_PREPARED_NOT_LIVE",
+  "supplierPreference": "API-first integration",
+  "launchFallback": "Request-to-book with supplier retaining final availability and booking confirmation control",
+  "publicFacts": {
+    "base": "Plaine Magnien, Mauritius",
+    "fleetScaleClaim": "213+ vehicles listed",
+    "delivery": "Island-wide delivery and recovery",
+    "airport": "Airport service 24/7; FAQ states airport delivery is free",
+    "mileage": "Unlimited mileage",
+    "roadside": "24/7 roadside assistance",
+    "insurance": "Civil liability insurance stated for vehicles",
+    "minimumAge": 21,
+    "licenceExperience": "Valid driver's licence with at least one year driving experience"
+  },
+  "pilotVehicles": [
+    {"vehicle":"Suzuki Spresso","fromEUR":23,"transmission":"Automatic","fuel":"Petrol","passengers":5,"luggage":3},
+    {"vehicle":"Toyota Vitz","fromEUR":26,"transmission":"Automatic","fuel":"Petrol","passengers":5,"luggage":3},
+    {"vehicle":"Suzuki Swift","fromEUR":27,"transmission":"Automatic","fuel":"Petrol","passengers":5,"luggage":3},
+    {"vehicle":"Suzuki Ertiga","fromEUR":32,"transmission":"Automatic","fuel":"Petrol","passengers":7,"luggage":3},
+    {"vehicle":"Nissan Magnite","fromEUR":29,"transmission":"Automatic","fuel":"Petrol","passengers":5,"luggage":3},
+    {"vehicle":"Suzuki Grand Vitara","fromEUR":41,"transmission":"Automatic","fuel":"Hybrid","passengers":5,"luggage":3}
+  ],
+  "commercialGate": "No universal commission or final payment/payout workflow is represented as agreed. Must be mutually agreed in writing before LIVE.",
+  "apiGate": "TOETI does not claim production-ready supplier API/channel documentation. WST API/auth/rate/availability/booking contract must be reviewed before claiming compatibility.",
+  "visualRule": "Use genuine Mauritius imagery only; Le Morne/Indian Ocean visual identity, distinct from all other TOETI destinations.",
+  "sources": [
+    "https://www.carhiremauritius.com/",
+    "https://www.carhiremauritius.com/our-cars",
+    "https://www.carhiremauritius.com/faq",
+    "https://book.carhiremauritius.com/",
+    "https://rentals.carhiremauritius.com/"
+  ]
+}
