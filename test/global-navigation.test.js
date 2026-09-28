@@ -20,6 +20,14 @@ test('Explore exposes working Cars, Tours and Long-stay destinations', async () 
   assert.match(html, /id="longstay"/);
 });
 
+test('Zanzibar customer destination hides internal demo and launch workflow copy', async () => {
+  const html = await (await get('/destination/zanzibar')).text();
+
+  assert.doesNotMatch(html, />Demo flow</);
+  assert.doesNotMatch(html, /Launch \/ founding-partner phase/);
+  assert.match(html, /Local travel, connected globally\./);
+});
+
 test('Explore does not expose internal demo or launch workflow copy', async () => {
   const html = await (await get('/explore')).text();
 
