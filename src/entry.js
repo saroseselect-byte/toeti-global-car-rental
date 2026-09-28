@@ -31,7 +31,11 @@ export default {async fetch(request,env,ctx){
  if(request.method==='GET'&&preview){
    const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx); let base=await shell.text();
    base=shellWith(base,preview,supplierCss);
-   const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org'));h.set('cache-control','no-store');return new Response(base,{status:200,headers:h});
+   const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org'));h.set('cache-control','no-store');h.set('x-robots-tag','noindex, nofollow');return new Response(base,{status:200,headers:h});
+ }
+ if(request.method==='GET'&&url.pathname==='/demo') return new Response('Not found',{status:404,headers:{'content-type':'text/plain; charset=utf-8','x-robots-tag':'noindex, nofollow'}});
+ if(request.method==='GET'&&url.pathname==='/partners'){
+   response=await app.fetch(request,env,ctx);let body=await response.text();body=body.replace('TOETI FOUNDING SUPPLIERS','TOETI SUPPLIER NETWORK').replace('founding-supplier','supplier').replace('<a class="btn ghost" href="/demo">See the working demo</a>','').replace('Launch / founding-partner phase · No invented traffic, bookings or universal commission.','Local travel, connected globally.').replace('<a href="/demo">Demo flow</a>','');const h=new Headers(response.headers);h.set('cache-control','no-store');return new Response(body,{status:200,headers:h});
  }
  response=await app.fetch(request,env,ctx);
  const isZanzibar=url.pathname==='/destination/zanzibar'||url.pathname.startsWith('/offers/');
@@ -40,9 +44,9 @@ export default {async fetch(request,env,ctx){
  let body=await response.text();body=body.replace('</style>',`${zanzibarCss}</style>`).replace('href="/destination/zanzibar">Explore','href="/explore">Explore');
  if(url.pathname==='/destination/zanzibar'){
   body=body.replace(/<section class="welcome">[\s\S]*?<\/section>/,heroMarkup);
-  body=body.replace(`<img src="${badPradoPhoto}" alt="Toyota Prado in Zanzibar" loading="lazy">`,`<div class="prado-safe">TOYOTA PRADO<small>ZANZIBAR · SUPPLIER PHOTO UPDATE</small></div>`);
+  body=body.replace(`<img src="${badPradoPhoto}" alt="Toyota Prado in Zanzibar" loading="lazy">`,`<div class="prado-safe">TOYOTA PRADO<small>ZANZIBAR · PHOTO COMING SOON</small></div>`);
   body=body.replace('<div class="carvisual">TOUR</div><div class="card-body">',`<div class="carvisual experience-visual"><img src="${spicePhoto}" alt="Stone Town cultural experience in Zanzibar" loading="lazy"></div><div class="card-body">`);
  }
- if(url.pathname.includes('veh_prado'))body=body.replace(`<img src="${badPradoPhoto}"`,`<span class="prado-safe">TOYOTA PRADO<small>ZANZIBAR · SUPPLIER PHOTO UPDATE</small></span><img style="display:none" src="${badPradoPhoto}"`);
+ if(url.pathname.includes('veh_prado'))body=body.replace(`<img src="${badPradoPhoto}"`,`<span class="prado-safe">TOYOTA PRADO<small>ZANZIBAR · PHOTO COMING SOON</small></span><img style="display:none" src="${badPradoPhoto}"`);
  const h=new Headers(response.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org'));h.set('cache-control','no-store');return new Response(body,{status:response.status,statusText:response.statusText,headers:h});
 }};
