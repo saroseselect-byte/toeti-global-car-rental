@@ -48,7 +48,7 @@ export default {async fetch(request,env,ctx){
  const isZanzibar=url.pathname==='/destination/zanzibar'||url.pathname.startsWith('/offers/');
  if(request.method!=='GET'||!isZanzibar)return response;
  const ct=response.headers.get('content-type')||'';if(!ct.includes('text/html'))return response;
- let body=await response.text();body=body.replace('</style>',`${zanzibarCss}</style>`).replace('href="/destination/zanzibar">Explore','href="/explore">Explore');
+ let body=await response.text();body=body.replace('</style>',`${zanzibarCss}</style>`).replace('href="/destination/zanzibar">Explore','href="/explore">Explore').replace('<a href="/demo">Demo flow</a>','').replace('Launch / founding-partner phase · No invented traffic, bookings or universal commission.','Local travel, connected globally.');
  if(url.pathname==='/destination/zanzibar'){
   body=body.replace(/<section class="welcome">[\s\S]*?<\/section>/,heroMarkup);
   body=body.replace(`<img src="${badPradoPhoto}" alt="Toyota Prado in Zanzibar" loading="lazy">`,`<div class="prado-safe">TOYOTA PRADO<small>ZANZIBAR · PHOTO COMING SOON</small></div>`);
