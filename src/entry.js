@@ -23,7 +23,7 @@ export default {async fetch(request,env,ctx){
    const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx);let base=await shell.text();
    const isHome=url.pathname==='/';
    base=shellWith(base,isHome?globalHome():globalExplore(),isHome?globalHomeCss:globalExploreCss);
-   if(isHome) base=base.replace('<nav class="navlinks">','<nav class="navlinks"><a href="/#destinations">Destinations</a><a href="/#live">Cars</a><a href="/#experiences">Tours &amp; Experiences</a><a href="/#longstay">Long-stay</a>').replace('<a href="/demo">Demo flow</a>','').replace('Launch / founding-partner phase · No invented traffic, bookings or universal commission.','Local travel, connected globally.');
+   if(isHome) base=base.replace('<nav class="navlinks">','<nav class="navlinks"><a href="/#destinations">Destinations</a><a href="/explore#cars">Cars</a><a href="/explore#experiences">Tours &amp; Experiences</a><a href="/explore#longstay">Long-stay</a>').replace('<a href="/demo">Demo flow</a>','').replace('Launch / founding-partner phase · No invented traffic, bookings or universal commission.','Local travel, connected globally.');
    const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace("script-src 'unsafe-inline'","script-src 'unsafe-inline' https://unpkg.com").replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org https://unpkg.com'));h.set('cache-control','no-store');return new Response(base,{status:200,headers:h});
  }
  const preview=supplierPreview(url.pathname);
