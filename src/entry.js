@@ -15,7 +15,7 @@ function shellWith(shell,main,css){return shell.replace(/<main\b[^>]*>[\s\S]*<\/
 
 export default {async fetch(request,env,ctx){
  const url=new URL(request.url);
- if(url.pathname==='/supplier/maluda-zanzibar'||url.pathname.startsWith('/cars/')||url.pathname.startsWith('/request/')) return maluda.fetch(request,env,ctx);
+ if(url.pathname==='/destination/zanzibar'||url.pathname==='/supplier/maluda-zanzibar'||url.pathname.startsWith('/cars/')||url.pathname.startsWith('/request/')) return maluda.fetch(request,env,ctx);
  if(request.method==='GET'&&url.pathname==='/supplier/yacout-marrakech-review'){
    const shell=await app.fetch(new Request(new URL('/destination/zanzibar',url),request),env,ctx);const base=shellWith(await shell.text(),yacoutReview(),yacoutCss);const h=new Headers(shell.headers);h.set('cache-control','no-store');h.set('x-robots-tag','noindex, nofollow');return new Response(base,{status:200,headers:h});
  }
