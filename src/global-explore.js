@@ -5,7 +5,7 @@ const destinations=[
  {name:'Agadir',country:'Morocco',region:'North Africa',type:'EXPERIENCE',label:'Tours & Experiences',href:'#experiences',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Agadir_beach,_Morocco.JPG',position:'center 54%',status:'COMING SOON',copy:'Five Agadir experiences are prepared. This destination is being prepared for customer launch.'}
 ];
 
-const card=d=>`<a class="gx-card" href="${d.href}" style="--gx-img:url('${d.image}');--gx-pos:${d.position}"><div class="gx-overlay"></div><div class="gx-cardtop"><span>${d.region}</span><span class="gx-state">${d.status}</span></div><div class="gx-cardbody"><small>${d.label}</small><h3>${d.name}</h3><p>${d.country}</p><div class="gx-copy">${d.copy}</div><b>Explore ${d.name} →</b></div></a>`;
+const card=d=>d.status==='COMING SOON'?`<article class="gx-card gx-soon" style="--gx-img:url('${d.image}');--gx-pos:${d.position}"><div class="gx-overlay"></div><div class="gx-cardtop"><span>${d.region}</span><span class="gx-state">${d.status}</span></div><div class="gx-cardbody"><small>${d.label}</small><h3>${d.name}</h3><p>${d.country}</p><div class="gx-copy">${d.copy}</div><b>Coming soon</b></div></article>`:`<a class="gx-card" href="${d.href}" style="--gx-img:url('${d.image}');--gx-pos:${d.position}"><div class="gx-overlay"></div><div class="gx-cardtop"><span>${d.region}</span><span class="gx-state">${d.status}</span></div><div class="gx-cardbody"><small>${d.label}</small><h3>${d.name}</h3><p>${d.country}</p><div class="gx-copy">${d.copy}</div><b>Explore ${d.name} →</b></div></a>`;
 
 export function globalExplore(){
  const cars=destinations.filter(d=>d.type==='CAR_RENTAL').map(card).join('');
