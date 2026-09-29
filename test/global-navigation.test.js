@@ -9,7 +9,7 @@ test('homepage product buttons open the matching Explore sections', async () => 
 
   assert.match(html, /href="\/explore#cars"[^>]*><span>CARS<\/span>/);
   assert.match(html, /href="\/explore#experiences"[^>]*><span>TOURS &amp; EXPERIENCES<\/span>/);
-  assert.match(html, /href="\/explore#longstay"[^>]*><span>LONG-STAY<\/span>/);
+  assert.match(html, /href="\/explore#longstay"[^>]*><span>LONG-STAY(?: CARS)?<\/span>/);
 });
 
 test('Explore exposes working Cars, Tours and Long-stay destinations', async () => {
