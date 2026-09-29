@@ -1,0 +1,19 @@
+name: TOETI Quality Gate
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run check
+      - name: Public-copy guard
+        run: |
+          ! grep -RniE "PENDING APPROVAL|P2 · DEMO|TOETI FOUNDING SUPPLIERS|ONE TOETI BRAIN" src/global-home.js src/global-explore.js
