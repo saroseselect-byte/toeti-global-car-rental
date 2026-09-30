@@ -1,5 +1,6 @@
 
 import maluda from './maluda-zanzibar-final-worker.js';
+import nch from './qa-click-wrapper.js';
 import app from './index.js';
 import { supplierPreview, supplierCss } from './supplier-pages.js';
 import { globalExplore, globalExploreCss } from './global-explore.js';
@@ -18,6 +19,7 @@ export default {async fetch(request,env,ctx){
  const url=new URL(request.url);
  if(request.method==='GET'&&['/supplier/cape-car-tours','/experiences/cape-car-tours'].includes(url.pathname))return new Response(capeCarToursPage(),{status:200,headers:{'content-type':'text/html; charset=utf-8','cache-control':'no-store','x-robots-tag':'noindex, nofollow'}});
  if(url.pathname==='/supplier/maluda-zanzibar'||url.pathname.startsWith('/cars/')||url.pathname.startsWith('/request/')) return maluda.fetch(request,env,ctx);
+ if(url.pathname==='/supplier/nch-fiji'||url.pathname==='/supplier/nch-rentals-fiji'||url.pathname==='/supplier/undefined'||url.pathname.startsWith('/nch/request')){const mapped=url.pathname.startsWith('/nch/request')?new URL('/request'+url.search,url):url;return nch.fetch(new Request(mapped,request),env,ctx);}
  if(request.method==='GET'&&url.pathname==='/supplier/yacout-marrakech-review'){
    const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx);const base=shellWith(await shell.text(),yacoutReview(),yacoutCss);const h=new Headers(shell.headers);h.set('cache-control','no-store');h.set('x-robots-tag','noindex, nofollow');return new Response(base,{status:200,headers:h});
  }
