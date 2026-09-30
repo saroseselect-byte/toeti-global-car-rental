@@ -36,11 +36,12 @@ export default {async fetch(request,env,ctx){
    base=publicMeta(base,isHome?{title:'TOETI Global — Rental Cars, Tours & Long-Stay Cars',description:'Explore supplier-approved rental cars, tours and long-stay car rentals with TOETI Global.',canonical:'https://toeti-global-car-rental.sarose.workers.dev/'}:{title:'Explore TOETI Destinations — Cars, Tours & Long-Stay',description:'Explore customer-ready TOETI destinations, local rental cars, tours and verified long-stay car rentals.',canonical:'https://toeti-global-car-rental.sarose.workers.dev/explore'});
    const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace("script-src 'unsafe-inline'","script-src 'unsafe-inline' https://unpkg.com").replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org https://unpkg.com'));h.set('cache-control','no-store');return new Response(base,{status:200,headers:h});
  }
- const preview=supplierPreview(url.pathname);
+ const preview=supplierPreview(url.pathname,url.searchParams.get('experience'));
  let response;
  if(request.method==='GET'&&preview){
    const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx); let base=await shell.text();
    base=shellWith(base,preview,supplierCss);
+   base=base.replace('<a href="/demo">Demo flow</a>','');
    const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org'));h.set('cache-control','no-store');h.set('x-robots-tag','noindex, nofollow');return new Response(base,{status:200,headers:h});
  }
  if(request.method==='GET'&&url.pathname==='/zanzibar-car-rental'){
