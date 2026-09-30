@@ -1,8 +1,6 @@
-const destinations=[
- {name:'Zanzibar',country:'Tanzania',region:'East Africa',type:'CAR_RENTAL',label:'Rental Cars',href:'/destination/zanzibar?type=CAR_RENTAL',image:'https://upload.wikimedia.org/wikipedia/commons/8/8d/Nungwi_%282010-011-1318-T%29.jpg',position:'center 48%',status:'AVAILABLE NOW',copy:'Explore Zanzibar with local rental cars from USD 25/day. Send a request and the local supplier confirms availability.'}
-];
+import { customerReadyDestinations as destinations } from './destinations.js';
 
-const card=d=>`<a class="gx-card" href="${d.href}" style="--gx-img:url('${d.image}');--gx-pos:${d.position}"><div class="gx-overlay"></div><div class="gx-cardtop"><span>${d.region}</span><span class="gx-state">${d.status}</span></div><div class="gx-cardbody"><small>${d.label}</small><h3>${d.name}</h3><p>${d.country}</p><div class="gx-copy">${d.copy}</div><b>Explore ${d.name} →</b></div></a>`;
+const card=d=>`<a class="gx-card" href="${d.exploreUrl}" style="--gx-img:url('${d.image}');--gx-pos:${d.position}"><div class="gx-overlay"></div><div class="gx-cardtop"><span>${d.region}</span><span class="gx-state">${d.stateLabel}</span></div><div class="gx-cardbody"><small>${d.label}</small><h3>${d.destination}</h3><p>${d.country}</p><div class="gx-copy">${d.copy}</div><b>Explore ${d.destination} →</b></div></a>`;
 
 export function globalExplore(){
  const cars=destinations.filter(d=>d.type==='CAR_RENTAL').map(card).join('');
