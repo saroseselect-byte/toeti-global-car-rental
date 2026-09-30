@@ -1,0 +1,36 @@
+{
+  "supplier": "NCH Rentals",
+  "destination": "Fiji",
+  "base": "Nadi",
+  "stream": "P1_CARS",
+  "status": "REVIEW_READY_DRAFT",
+  "approval_required_before_live": true,
+  "commercial_terms_required_before_live": true,
+  "supplier_confirmed": {
+    "groups": "A-F",
+    "example_models": ["Toyota Corolla", "Mazda Demio", "Nissan X-Trail", "Toyota Voxy", "Toyota Vitz"],
+    "transmission": "Automatic",
+    "passengers": "5-8",
+    "luggage": "1-4 bags",
+    "daily_rate_range": "FJD 97.50-210.50/day",
+    "insurance": "Standard insurance included",
+    "insurance_excess": "FJD 3,500",
+    "security_deposit": "FJD 0",
+    "mileage": "Unlimited",
+    "roadside_assistance": "Included except punctures",
+    "driver_age": "18-80",
+    "licence": "Licence must be in English or accompanied by an English translation; IDP if available",
+    "delivery": "Free within Nadi area, 10 km radius from the airport",
+    "fuel": "Full-to-full",
+    "cancellation_no_show": "No fees",
+    "fleet_scale": "Over 70 licensed rental vehicles; Japanese second-hand vehicles rotated every 3 years"
+  },
+  "presentation_rules": {
+    "do_not_infer_group_specific_details": true,
+    "use_only_supplier_confirmed_vehicle_data": true,
+    "destination_visuals": "Real Fiji/Nadi imagery only; no AI/fake destination imagery",
+    "local_identity": "Fiji presentation must be visually distinct from every other TOETI destination",
+    "supplier_vehicle_photos": "Six supplier-provided images received by email; preserve as source assets for review presentation"
+  },
+  "next_supplier_action": "Review proposed presentation, request corrections if needed, then provide written approval. Commercial/payment arrangement must be agreed in writing before LIVE."
+}
