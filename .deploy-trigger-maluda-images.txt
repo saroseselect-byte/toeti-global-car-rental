@@ -1,0 +1,1 @@
+Trigger production deployment for verified Maluda image-defect fix #48/#49. No runtime logic change.
