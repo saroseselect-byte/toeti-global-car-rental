@@ -40,7 +40,8 @@ export default {async fetch(request,env,ctx){
  let response;
  if(request.method==='GET'&&preview){
    const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx); let base=await shell.text();
-   base=shellWith(base,preview,supplierCss);\n   base=base.replace('<a href="/demo">Demo flow</a>','');
+   base=shellWith(base,preview,supplierCss);
+   base=base.replace('<a href="/demo">Demo flow</a>','');
    const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org'));h.set('cache-control','no-store');h.set('x-robots-tag','noindex, nofollow');return new Response(base,{status:200,headers:h});
  }
  if(request.method==='GET'&&url.pathname==='/zanzibar-car-rental'){
