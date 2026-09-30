@@ -15,6 +15,10 @@ const heroMarkup=`<section class="destination-hero"><div class="destination-hero
 
 function shellWith(shell,main,css){return shell.replace(/<main\b[^>]*>[\s\S]*<\/main>/,main).replace('</style>',`${css}</style>`).replace('href="/destination/zanzibar">Explore','href="/explore">Explore');}
 
+function publicMeta(html,{title,description,canonical}){
+ return html.replace(/<title>[\s\S]*?<\/title>/i,`<title>${title}</title>`).replace('</head>',`<meta name="description" content="${description}"><meta name="robots" content="index,follow"><link rel="canonical" href="${canonical}"></head>`);
+}
+
 export default {async fetch(request,env,ctx){
  const url=new URL(request.url);
  if(request.method==='GET'&&['/supplier/cape-car-tours','/experiences/cape-car-tours'].includes(url.pathname))return new Response(capeCarToursPage(),{status:200,headers:{'content-type':'text/html; charset=utf-8','cache-control':'no-store','x-robots-tag':'noindex, nofollow'}});
@@ -29,6 +33,7 @@ export default {async fetch(request,env,ctx){
    base=shellWith(base,isHome?globalHome():globalExplore(),isHome?globalHomeCss:globalExploreCss);
    base=base.replace('<a href="/demo">Demo flow</a>','').replace('Launch / founding-partner phase · No invented traffic, bookings or universal commission.','Local travel, connected globally.');
    if(isHome) base=base.replace('<nav class="navlinks">','<nav class="navlinks"><a href="/#destinations">Destinations</a><a href="/explore#cars">Cars</a><a href="/explore#experiences">Tours &amp; Experiences</a><a href="/explore#longstay">Long-stay</a>');
+   base=publicMeta(base,isHome?{title:'TOETI Global — Rental Cars, Tours & Long-Stay Cars',description:'Explore supplier-approved rental cars, tours and long-stay car rentals with TOETI Global.',canonical:'https://toeti-global-car-rental.sarose.workers.dev/'}:{title:'Explore TOETI Destinations — Cars, Tours & Long-Stay',description:'Explore customer-ready TOETI destinations, local rental cars, tours and verified long-stay car rentals.',canonical:'https://toeti-global-car-rental.sarose.workers.dev/explore'});
    const h=new Headers(shell.headers);const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace("script-src 'unsafe-inline'","script-src 'unsafe-inline' https://unpkg.com").replace('https://res.cloudinary.com','https://res.cloudinary.com https://upload.wikimedia.org https://commons.wikimedia.org https://unpkg.com'));h.set('cache-control','no-store');return new Response(base,{status:200,headers:h});
  }
  const preview=supplierPreview(url.pathname);
@@ -44,7 +49,7 @@ export default {async fetch(request,env,ctx){
  }
  if(request.method==='GET'&&url.pathname==='/demo') return new Response('Not found',{status:404,headers:{'content-type':'text/plain; charset=utf-8','x-robots-tag':'noindex, nofollow'}});
  if(request.method==='GET'&&url.pathname==='/partners'){
-   response=await app.fetch(request,env,ctx);let body=await response.text();body=body.replace('TOETI FOUNDING SUPPLIERS','TOETI SUPPLIER NETWORK').replace('founding-supplier','supplier').replace('<a class="btn ghost" href="/demo">See the working demo</a>','').replace('Launch / founding-partner phase · No invented traffic, bookings or universal commission.','Local travel, connected globally.').replace('<a href="/demo">Demo flow</a>','');const h=new Headers(response.headers);h.set('cache-control','no-store');return new Response(body,{status:200,headers:h});
+   response=await app.fetch(request,env,ctx);let body=await response.text();body=publicMeta(body,{title:'Partner with TOETI Global',description:'Partner with TOETI to reach international travellers while keeping control of inventory, pricing and availability.',canonical:'https://toeti-global-car-rental.sarose.workers.dev/partners'});body=body.replace('TOETI FOUNDING SUPPLIERS','TOETI SUPPLIER NETWORK').replace('founding-supplier','supplier').replace('<a class="btn ghost" href="/demo">See the working demo</a>','').replace('Launch / founding-partner phase · No invented traffic, bookings or universal commission.','Local travel, connected globally.').replace('<a href="/demo">Demo flow</a>','');const h=new Headers(response.headers);h.set('cache-control','no-store');return new Response(body,{status:200,headers:h});
  }
  response=await app.fetch(request,env,ctx);
  const isZanzibar=url.pathname==='/destination/zanzibar'||url.pathname.startsWith('/offers/');
