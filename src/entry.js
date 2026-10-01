@@ -55,7 +55,7 @@ export default {async fetch(request,env,ctx){
    const mapped=new URL('/supplier/maluda-zanzibar'+url.search,url);
    return maluda.fetch(new Request(mapped,request),env,ctx);
  }
- if(request.method==='GET'&&url.pathname.startsWith('/offers/veh_')){
+ if(['GET','HEAD'].includes(request.method)&&url.pathname.startsWith('/offers/veh_')){
    const map={veh_escudo:'suzuki-escudo',veh_rav4:'toyota-rav4',veh_juke:'nissan-juke',veh_rav4_miss:'toyota-rav4-miss-tanzania',veh_harrier:'toyota-harrier',veh_alphard:'toyota-alphard'};
    const slug=map[url.pathname.slice('/offers/'.length)];
    if(slug){const target=new URL('/cars/'+slug+url.search,url);return Response.redirect(target.toString(),302)}
