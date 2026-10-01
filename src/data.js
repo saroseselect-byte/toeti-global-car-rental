@@ -43,7 +43,7 @@ export const experience = {
     exclusions: 'Example only — supplier confirmation required.', cancellation: 'Example only — supplier confirmation required.' }
 };
 
-export const offers = [...vehicles];
+export const offers = vehicles.filter(vehicle => vehicle.id !== 'veh_prado');
 export const policies = {
   includedPickup: ['Stone Town','Zanzibar Airport','Zanzibar Seaport'],
   outsideStoneTownFeeCents: 1000,
