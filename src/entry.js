@@ -16,7 +16,14 @@ const heroMarkup=`<section class="destination-hero"><div class="destination-hero
 function shellWith(shell,main,css){return shell.replace(/<main\b[^>]*>[\s\S]*<\/main>/,main).replace('</style>',`${css}</style>`).replace('href="/destination/zanzibar">Explore','href="/explore">Explore');}
 
 function publicMeta(html,{title,description,canonical}){
- return html.replace(/<title>[\s\S]*?<\/title>/i,`<title>${title}</title>`).replace('</head>',`<meta name="description" content="${description}"><meta name="robots" content="index,follow"><link rel="canonical" href="${canonical}"></head>`);
+ const withTitle=html.replace(/<title>[\s\S]*?<\/title>/i,`<title>${title}</title>`);
+ const withDescription=/<meta\s+name=["']description["'][^>]*>/i.test(withTitle)
+  ? withTitle.replace(/<meta\s+name=["']description["'][^>]*>/i,`<meta name="description" content="${description}">`)
+  : withTitle.replace('</head>',`<meta name="description" content="${description}"></head>`);
+ const withoutPublicMeta=withDescription
+  .replace(/<meta\s+name=["']robots["'][^>]*>/ig,'')
+  .replace(/<link\s+rel=["']canonical["'][^>]*>/ig,'');
+ return withoutPublicMeta.replace('</head>',`<meta name="robots" content="index,follow"><link rel="canonical" href="${canonical}"></head>`);
 }
 
 export default {async fetch(request,env,ctx){
