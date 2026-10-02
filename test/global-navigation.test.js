@@ -33,5 +33,7 @@ test('Explore does not expose internal demo or launch workflow copy', async () =
 
   assert.doesNotMatch(html, />Demo flow</);
   assert.doesNotMatch(html, /Launch \/ founding-partner phase/);
+  assert.doesNotMatch(html, /destination previews/i);
+  assert.match(html, /destination/);
   assert.match(html, /Local travel, connected globally\./);
 });
