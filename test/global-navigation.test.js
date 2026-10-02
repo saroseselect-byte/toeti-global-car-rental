@@ -37,3 +37,12 @@ test('Explore does not expose internal demo or launch workflow copy', async () =
   assert.match(html, /destination/);
   assert.match(html, /Local travel, connected globally\./);
 });
+
+test('public SEO files expose only customer-ready TOETI routes', async () => {
+  const robots = await (await get('/robots.txt')).text();
+  const sitemap = await (await get('/sitemap.xml')).text();
+
+  assert.match(robots, /Sitemap: https:\/\/toeti-global-car-rental\.sarose\.workers\.dev\/sitemap\.xml/);
+  assert.match(sitemap, /https:\/\/toeti-global-car-rental\.sarose\.workers\.dev\/zanzibar-car-rental/);
+  assert.doesNotMatch(sitemap, /supplier\/|review|preview|demo/i);
+});
