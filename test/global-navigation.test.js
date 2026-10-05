@@ -37,3 +37,11 @@ test('Explore does not expose internal demo or launch workflow copy', async () =
   assert.match(html, /destination/);
   assert.match(html, /Local travel, connected globally\./);
 });
+
+test('Explore speaks to customers without internal supplier workflow language', async () => {
+  const html = await (await get('/explore')).text();
+
+  assert.doesNotMatch(html, /supplier approval|after approval|suppliers confirm/i);
+  assert.doesNotMatch(html, /COMING SOON/);
+  assert.match(html, /More journeys ahead/);
+});
