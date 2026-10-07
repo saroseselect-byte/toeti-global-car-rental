@@ -14,3 +14,14 @@ test('Yacout supplier review is presented in French', () => {
   assert.match(html, /REVUE PRIVÉE DU FOURNISSEUR/);
   assert.match(html, /À VÉRIFIER AVANT ACTIVATION/);
 });
+
+test('Manolya cards use five distinct destination-accurate images without external checkout leakage', () => {
+  const html = supplierPreview('/supplier/manolya-istanbul');
+  assert.equal((html.match(/class="sp-product-image"/g) || []).length, 5);
+  assert.match(html, /Exterior_of_Hagia_Sophia-/);
+  assert.match(html, /Topkapi_Palace/);
+  assert.match(html, /Basilica_Cistern_Istanbul/);
+  assert.match(html, /Sunset_over_Bosphorus/);
+  assert.match(html, /Dolmabahce-Palace-Istanbul/);
+  assert.doesNotMatch(html, /href="https:\/\/manolyatour\.com\/skip-the-line-tickets\//);
+});
