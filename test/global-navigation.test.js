@@ -46,3 +46,11 @@ test('public SEO files expose only customer-ready TOETI routes', async () => {
   assert.match(sitemap, /https:\/\/toeti-global-car-rental\.sarose\.workers\.dev\/zanzibar-car-rental/);
   assert.doesNotMatch(sitemap, /supplier\/|review|preview|demo/i);
 });
+
+test('Explore speaks to customers without internal supplier workflow language', async () => {
+  const html = await (await get('/explore')).text();
+
+  assert.doesNotMatch(html, /supplier approval|after approval|suppliers confirm/i);
+  assert.doesNotMatch(html, /COMING SOON/);
+  assert.match(html, /More journeys ahead/);
+});

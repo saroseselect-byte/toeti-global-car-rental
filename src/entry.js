@@ -32,7 +32,15 @@ export default {async fetch(request,env,ctx){
  if(request.method==='GET'&&url.pathname==='/sitemap.xml')return new Response(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>https://toeti-global-car-rental.sarose.workers.dev/</loc></url>\n  <url><loc>https://toeti-global-car-rental.sarose.workers.dev/explore</loc></url>\n  <url><loc>https://toeti-global-car-rental.sarose.workers.dev/partners</loc></url>\n  <url><loc>https://toeti-global-car-rental.sarose.workers.dev/zanzibar-car-rental</loc></url>\n</urlset>\n`,{headers:{'content-type':'application/xml; charset=utf-8','cache-control':'public, max-age=3600'}});
  if(request.method==='GET'&&['/supplier/cape-car-tours','/experiences/cape-car-tours'].includes(url.pathname))return new Response(capeCarToursPage(),{status:200,headers:{'content-type':'text/html; charset=utf-8','cache-control':'no-store','x-robots-tag':'noindex, nofollow'}});
  if(url.pathname==='/supplier/maluda-zanzibar'||url.pathname.startsWith('/cars/')||url.pathname.startsWith('/request/')) return maluda.fetch(request,env,ctx);
- if(url.pathname==='/supplier/nch-fiji'||url.pathname==='/supplier/nch-rentals-fiji'||url.pathname==='/supplier/undefined'||url.pathname.startsWith('/nch/request')){const mapped=url.pathname.startsWith('/nch/request')?new URL('/request'+url.search,url):url;return nch.fetch(new Request(mapped,request),env,ctx);}
+ if(url.pathname==='/supplier/nch-fiji'||url.pathname==='/supplier/nch-rentals-fiji'||url.pathname==='/supplier/undefined'||url.pathname==='/nch/request'){
+   const mapped=url.pathname==='/nch/request'?new URL('/request'+url.search,url):url;
+   const response=await nch.fetch(new Request(mapped,request),env,ctx);
+   const h=new Headers(response.headers);
+   if(h.get('location')===new URL('/',url).toString())h.set('location',new URL('/supplier/nch-fiji',url).toString());
+   if(!(h.get('content-type')||'').includes('text/html'))return new Response(response.body,{status:response.status,headers:h});
+   const body=(await response.text()).replaceAll('action="/request"','action="/nch/request"').replaceAll("location.href='/request?item='","location.href='/nch/request?item='").replaceAll('href="/"','href="/supplier/nch-fiji"');
+   return new Response(body,{status:response.status,headers:h});
+ }
  if(request.method==='GET'&&url.pathname==='/supplier/yacout-marrakech-review'){
    const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx);const base=shellWith(await shell.text(),yacoutReview(),yacoutCss);const h=new Headers(shell.headers);h.set('cache-control','no-store');h.set('x-robots-tag','noindex, nofollow');return new Response(base,{status:200,headers:h});
  }
