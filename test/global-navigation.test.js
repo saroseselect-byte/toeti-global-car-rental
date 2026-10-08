@@ -59,6 +59,6 @@ test('Explore speaks to customers without internal supplier workflow language', 
 test('homepage globe has no decorative flight stripe and retains Earth imagery for the fallback', async () => {
   const html = await (await get('/')).text();
 
-  assert.doesNotMatch(html, /class="globe-orbit"|class="globe-flight"/);
+  assert.doesNotMatch(html, /globe-orbit|globe-flight/);
   assert.match(html, /\.globe-fallback\{[^}]*earth-blue-marble\.jpg/);
 });
