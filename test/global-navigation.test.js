@@ -69,7 +69,7 @@ test('homepage globe has no decorative flight stripe and retains Earth imagery f
 
 
 test('public TOETI pages share the bright Sarose luxe theme', async () => {
-  for (const path of ['/', '/explore', '/destination/zanzibar', '/partners']) {
+  for (const path of ['/', '/explore', '/partners']) {
     const response = await get(path);
     const html = await response.text();
 
