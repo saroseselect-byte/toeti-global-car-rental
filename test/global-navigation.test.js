@@ -63,6 +63,6 @@ test('homepage globe has no decorative flight stripe and retains Earth imagery f
   assert.match(html, /\.globe-fallback\{[^}]*earth-blue-marble\.jpg/);
   assert.match(html, /body\{background:#fffefd!important/);
   assert.match(html, /filter:brightness\(1\.25\) saturate\(1\.2\)/);
-  assert.match(html, /<img class="global-mobility-reference"[^>]*src="\$\{TOETI_GLOBAL_MOBILITY_IMAGE\}"/);
+  assert.match(html, /<img class="global-mobility-reference"[^>]*src="data:image\/jpeg;base64,/);
   assert.match(html, /@keyframes toeti-world-turn/);
 });
