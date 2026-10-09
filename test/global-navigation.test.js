@@ -66,3 +66,16 @@ test('homepage globe has no decorative flight stripe and retains Earth imagery f
   assert.match(html, /<img class="global-mobility-reference"[^>]*src="data:image\/jpeg;base64,/);
   assert.match(html, /@keyframes toeti-world-turn/);
 });
+
+
+test('public TOETI pages share the bright Sarose luxe theme', async () => {
+  for (const path of ['/', '/explore', '/destination/zanzibar', '/partners']) {
+    const response = await get(path);
+    const html = await response.text();
+
+    assert.equal(response.status, 200);
+    assert.match(html, /--toeti-luxe-violet:#7c3aed/);
+    assert.match(html, /--toeti-luxe-neon:#c084fc/);
+    assert.match(html, /TOETI LUXE THEME/);
+  }
+});
