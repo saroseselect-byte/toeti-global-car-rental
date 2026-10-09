@@ -80,3 +80,13 @@ test('public TOETI pages share the bright Sarose luxe theme', async () => {
     assert.match(html, /TOETI LUXE THEME/);
   }
 });
+
+
+test('Explore and supplier pages visibly carry the TOETI Earth motif', async () => {
+  const exploreHtml = await (await get('/explore')).text();
+  const partnerHtml = await (await get('/partners')).text();
+
+  assert.match(exploreHtml, /\.gx-orbit\{[^}]*earth-blue-marble\.jpg/);
+  assert.match(partnerHtml, /toeti-partner-main/);
+  assert.match(partnerHtml, /\.toeti-partner-main:before\{[^}]*earth-blue-marble\.jpg/);
+});
