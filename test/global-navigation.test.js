@@ -76,6 +76,7 @@ test('public TOETI pages share the bright Sarose luxe theme', async () => {
     assert.equal(response.status, 200);
     assert.match(html, /--toeti-luxe-violet:#7c3aed/);
     assert.match(html, /--toeti-luxe-neon:#c084fc/);
+    assert.match(html, /--toeti-luxe-ivory:#fdfbf7/);
     assert.match(html, /TOETI LUXE THEME/);
   }
 });
