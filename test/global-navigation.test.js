@@ -54,3 +54,48 @@ test('Explore speaks to customers without internal supplier workflow language', 
   assert.doesNotMatch(html, /COMING SOON/);
   assert.match(html, /More journeys ahead/);
 });
+
+
+test('homepage globe has no decorative flight stripe and retains Earth imagery for the fallback', async () => {
+  const html = await (await get('/')).text();
+
+  assert.doesNotMatch(html, /globe-orbit|globe-flight/);
+  assert.match(html, /\.globe-fallback\{[^}]*earth-blue-marble\.jpg/);
+  assert.match(html, /body\{background:#fffefd!important/);
+  assert.match(html, /filter:brightness\(1\.25\) saturate\(1\.2\)/);
+  assert.match(html, /<img class="global-mobility-reference"[^>]*src="data:image\/jpeg;base64,/);
+  assert.match(html, /@keyframes toeti-world-turn/);
+});
+
+
+test('public TOETI pages share the bright Sarose luxe theme', async () => {
+  for (const path of ['/', '/explore', '/partners']) {
+    const response = await get(path);
+    const html = await response.text();
+
+    assert.equal(response.status, 200);
+    assert.match(html, /--toeti-luxe-violet:#7c3aed/);
+    assert.match(html, /--toeti-luxe-neon:#c084fc/);
+    assert.match(html, /--toeti-luxe-ivory:#fdfbf7/);
+    assert.match(html, /TOETI LUXE THEME/);
+  }
+});
+
+
+test('Explore and supplier pages visibly carry the TOETI Earth motif', async () => {
+  const exploreHtml = await (await get('/explore')).text();
+  const partnerHtml = await (await get('/partners')).text();
+
+  assert.match(exploreHtml, /\.gx-orbit\{[^}]*earth-blue-marble\.jpg/);
+  assert.match(partnerHtml, /toeti-partner-main/);
+  assert.match(partnerHtml, /\.toeti-partner-main:before\{[^}]*earth-blue-marble\.jpg/);
+});
+
+
+test('homepage globe shows all three TOETI mobility modes', async () => {
+  const html = await (await get('/')).text();
+
+  assert.match(html, /class="globe-mobility-marker car"/);
+  assert.match(html, /class="globe-mobility-marker tour"/);
+  assert.match(html, /class="globe-mobility-marker longstay"/);
+});
