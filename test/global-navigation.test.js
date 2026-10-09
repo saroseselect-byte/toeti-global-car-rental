@@ -90,3 +90,12 @@ test('Explore and supplier pages visibly carry the TOETI Earth motif', async () 
   assert.match(partnerHtml, /toeti-partner-main/);
   assert.match(partnerHtml, /\.toeti-partner-main:before\{[^}]*earth-blue-marble\.jpg/);
 });
+
+
+test('homepage globe shows all three TOETI mobility modes', async () => {
+  const html = await (await get('/')).text();
+
+  assert.match(html, /class="globe-mobility-marker car"/);
+  assert.match(html, /class="globe-mobility-marker tour"/);
+  assert.match(html, /class="globe-mobility-marker longstay"/);
+});
