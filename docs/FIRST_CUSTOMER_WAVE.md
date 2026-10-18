@@ -19,3 +19,11 @@ This is a launch-readiness plan, **not** permission to publish, email customers,
 
 ## Release gate
 MARKETING_READY requires deployed 200 routes, mobile+desktop visual QA, supplier written commercial approval, real availability disclaimer, enquiry success, privacy/consent and tracking, and CEO publication authorization. Never equate a green GitHub CI with marketing readiness.
+
+## Mandatory image provenance gate
+- Car imagery MUST match the exact supplier and vehicle. Reuse original supplier-provided/authorized NCH Fiji and Maluda Zanzibar assets; never replace with AI or generic car pictures.
+- Destination hero imagery MUST depict the named destination, with a verifiable source, correct geographic identification, and appropriate usage rights. Do not present a photo from another country/island as this destination.
+- Tour images MUST match the actual advertised tour/attraction or be clearly identified as representative regional imagery when explicitly approved; do not invent itinerary photos.
+- Keep an asset record with destination, supplier/vehicle/tour, source URL or file reference, rights/approval, and verification status before publication.
+- If provenance, rights, or identity cannot be verified, retain an accessible neutral placeholder and block customer marketing for that image until resolved.
+- Do not change already approved originals without a specific verified correction.
