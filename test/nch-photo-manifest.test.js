@@ -16,3 +16,11 @@ test('NCH group photo mapping fails closed until approved and hosted',()=>{
    assert.equal(approvedNchPhotoForGroup(group),null);
  }
 });
+
+test('NCH worker uses the verified photo gate rather than arbitrary images', async()=>{
+ const fs=await import('node:fs');
+ const worker=fs.readFileSync(new URL('../src/nch-fiji-worker.js',import.meta.url),'utf8');
+ assert.match(worker,/approvedNchPhotoForGroup\(g\.name\)/);
+ assert.match(worker,/Exact available vehicle confirmed by NCH/);
+ assert.doesNotMatch(worker,/nch-fiji-original-0[1-6]\.webp/);
+});
