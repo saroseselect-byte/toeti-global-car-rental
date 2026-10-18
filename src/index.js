@@ -1,3 +1,4 @@
+import { renderFijiRentalDemo } from './fiji-rental-demo.js';
 import { offers, vehicles, experience, supplier, policies } from './data.js';
 import { quoteCents, rentalDays, publicReference, secureToken, AvailabilityAdapter, PaymentRouter } from './domain.js';
 import { reviseSupplierReview, supplierReviewPage } from './review.js';
@@ -53,6 +54,7 @@ export default {async fetch(request,env){const u=new URL(request.url),p=u.pathna
   if(request.method==='GET'&&p==='/partners')return html(partnersPage());
   if(request.method==='GET'&&p==='/destination/zanzibar')return html(destination(u.searchParams.get('type')));
   if(request.method==='GET'&&p==='/demo')return html(demoPage());
+  if(request.method==='GET'&&p==='/demo/fiji-rental')return html(renderFijiRentalDemo());
   if(request.method==='POST'&&p==='/api/demo/reviews')return createDemoReview(request,env);
   let m=p.match(/^\/supplier\/demo\/review\/([^/]+)$/);if(request.method==='GET'&&m)return supplierReviewPage(m[1],env);
   m=p.match(/^\/api\/supplier-reviews\/([^/]+)\/action$/);if(request.method==='POST'&&m)return reviewAction(m[1],request,env);
