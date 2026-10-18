@@ -20,3 +20,17 @@ No external campaign may use these images until the exact vehicle/tour identity,
 - `/supplier/nch-fiji` is served by `src/qa-click-wrapper.js` backed by `src/nch-fiji-worker.js`. The latter contains **three Wikimedia Fiji scenery URLs**, but **Group A–F cards use text/placeholder visuals**, not the six original supplier vehicle photos. The original NCH photo assets have not been located in these active worker files. Do not claim Fiji photo readiness or substitute generic images.
 - The Fiji demo remains separately isolated and image-free. Its fictional prices must never be marketed as NCH offers.
 - Next evidence needed: original NCH photo file identifiers and approved group-to-photo mapping; visually inspect the six active Maluda URLs and the exact Wikimedia hero image metadata. Do not modify the customer-facing worker until verified.
+
+## Original NCH supplier attachments recovered (2026-10-18)
+Source: TOETI Gmail thread `Re: TOETI Global — Fiji car-rental partnership pilot`, supplier message dated 2026-09-13, six PNG attachments. All six were retrieved and visually inspected; **they are genuine supplier-submitted photos**, not stock/AI images.
+
+| Attachment timestamp in filename | Visible vehicle (visual identification; supplier group mapping NOT confirmed) |
+|---|---|
+| 11.49.17 AM | Blue Mazda hatchback (appears Mazda Demio) |
+| 11.49.37 AM | Red Toyota tall compact vehicle (front view; model unconfirmed) |
+| 11.49.57 AM | White tall minivan, side view (model unconfirmed) |
+| 11.50.38 AM | White crossover SUV (model unconfirmed) |
+| 11.50.55 AM | White Nissan X-Trail, side view (likely) |
+| 11.51.12 AM | White Nissan X-Trail, rear view — appears **same car as 11.50.55**, not necessarily a sixth distinct vehicle |
+
+**Do not map one attachment to each A–F group automatically.** Two X-Trail images appear to depict the same car; the red Toyota and white van require model identification. Some images show license plates: consider privacy/appropriateness of displaying plates in public, preserving originals internally. Supplier originals are in the TOETI mailbox; they have NOT been committed to GitHub or published because the current GitHub file actions accept UTF-8 text only, not binary PNG upload. Next: import originals through authorized binary asset upload workflow, then map groups using supplier-provided group mapping, verify customer page and obtain publication approval. Never substitute photos from unrelated Fiji operators.
