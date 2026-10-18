@@ -34,3 +34,11 @@ Source: TOETI Gmail thread `Re: TOETI Global — Fiji car-rental partnership pil
 | 11.51.12 AM | White Nissan X-Trail, rear view — appears **same car as 11.50.55**, not necessarily a sixth distinct vehicle |
 
 **Do not map one attachment to each A–F group automatically.** Two X-Trail images appear to depict the same car; the red Toyota and white van require model identification. Some images show license plates: consider privacy/appropriateness of displaying plates in public, preserving originals internally. Supplier originals are in the TOETI mailbox; they have NOT been committed to GitHub or published because the current GitHub file actions accept UTF-8 text only, not binary PNG upload. Next: import originals through authorized binary asset upload workflow, then map groups using supplier-provided group mapping, verify customer page and obtain publication approval. Never substitute photos from unrelated Fiji operators.
+
+## Verified 2026-10-18 — duplicate-work prevention
+- Original NCH supplier email 2026-09-13 (Gmail message `1a0980cf6129b1cc`) already contains six PNG attachments and fleet details; do not ask NCH to resend them.
+- Existing PR #13 already created `src/nch-fiji-worker.js`, `src/qa-click-wrapper.js`, and `supplier-pilots/nch-fiji.json`. PR #30 contains existing Fiji tests. Reuse, do not rebuild.
+- `supplier-pilots/nch-fiji.json` explicitly says the six supplier photos are *source assets for review*, and prohibits inferred group-specific details. It does **not** contain a verified image-to-group mapping or hosted photo URLs.
+- Previous TOETI outbound email already sent NCH the supplier review link. Do not send duplicate outreach; await or inspect existing approval thread before any new contact.
+- Existing unsent NCH photo mapping draft is redundant pending full asset/review audit; do not send it automatically.
+- Safe path: inspect earlier supplier review deployment and asset history; restore original images to review-only environment, labelled as a supplier fleet gallery without assigning unverified group identities; obtain written approval before customer launch.
