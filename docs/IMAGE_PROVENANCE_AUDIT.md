@@ -13,3 +13,10 @@ This is a **source-code inspection**, not visual verification of the actual imag
 
 ## Immediate marketing hold
 No external campaign may use these images until the exact vehicle/tour identity, geography, supplier permission or Creative Commons attribution requirements and deployed appearance have been verified. Avoid adding duplicate media to the repo. Reuse the existing authorized originals.
+
+## Second pass: active customer-facing worker (2026-10-18)
+- **Important correction:** The public `/supplier/maluda-zanzibar` and `/cars/*` routes are handled by `src/maluda-zanzibar-final-worker.js`, not solely `src/data.js`. This worker uses **six different Cloudinary vehicle URLs** from the `src/data.js` catalog. Audit the active worker images first, not the legacy catalog images.
+- Active Maluda worker maps six car slugs to six supplier-namespaced URLs. URL namespaces alone **do not prove** exact vehicle identity; verify against supplier originals visually.
+- `/supplier/nch-fiji` is served by `src/qa-click-wrapper.js` backed by `src/nch-fiji-worker.js`. The latter contains **three Wikimedia Fiji scenery URLs**, but **Group A–F cards use text/placeholder visuals**, not the six original supplier vehicle photos. The original NCH photo assets have not been located in these active worker files. Do not claim Fiji photo readiness or substitute generic images.
+- The Fiji demo remains separately isolated and image-free. Its fictional prices must never be marketed as NCH offers.
+- Next evidence needed: original NCH photo file identifiers and approved group-to-photo mapping; visually inspect the six active Maluda URLs and the exact Wikimedia hero image metadata. Do not modify the customer-facing worker until verified.
