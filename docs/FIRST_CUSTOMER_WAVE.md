@@ -27,3 +27,13 @@ MARKETING_READY requires deployed 200 routes, mobile+desktop visual QA, supplier
 - Keep an asset record with destination, supplier/vehicle/tour, source URL or file reference, rights/approval, and verification status before publication.
 - If provenance, rights, or identity cannot be verified, retain an accessible neutral placeholder and block customer marketing for that image until resolved.
 - Do not change already approved originals without a specific verified correction.
+
+## P2 supplier-email evidence verified 2026-10-19 — do not duplicate outreach
+
+| Supplier | Existing written evidence | Commercial gate | Next technical gate | External action |
+|---|---|---|---|---|
+| Agadir Visite | Hamid explicitly approved all **five presented excursions** on 2026-10-06 (Gmail thread `1a110eef4b53330c`). TOETI already sent a 15% commission, direct supplier payment, TOETI reference and monthly reconciliation proposal on 2026-10-07. | Supplier acceptance of proposed 15%, client rates, cancellations and booking/reconciliation flow **not proven**. | Reuse `/supplier/agadir-visite-agadir` five review cards. Verify TOETI-owned request flow and exact offers before activating. | **Do not request approval again**; await response to existing proposal, no automatic email. |
+| PragueWay | Supplier email 2026-10-01 (thread `1a0f43799c29199d`) offered a 20% TOETI / 80% supplier arrangement and either a tracked referral link or TOETI enquiry. TOETI chose tracked link and requested its details that day. | Actual referral URL, written commission basis, attribution duration and reporting not proven received. | Prepare attribution acceptance test for the **existing** `/supplier/pragueway-prague` page; do not link untracked third-party checkout. | **Do not re-ask** for already-requested referral details without reviewing newer replies. |
+| Manolya Tour | Zeki selected five experiences and supplied `https://manolyatour.com/skip-the-line-tickets/`. Review URL sent 2026-09-26 and reminder sent 2026-10-06 (thread `1a08235990fac0c7`). | Written final page approval, commission, payment and booking terms not proven. | Reuse existing `/supplier/manolya-istanbul` review; inspect tour details and images against supplied source. | Do not resend source requests or duplicate reminder. |
+
+**Correction to earlier priority list:** Agadir is now the first P2 activation candidate because **content approval is proven**, while PragueWay has the clearest proposed commercial model. Neither is SALES_GREEN: both still require a real, tested and attributed booking path plus signed commercial agreement and CEO release approval. No deploy, payment or supplier mail authorized by this evidence note.
