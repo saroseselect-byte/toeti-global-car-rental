@@ -42,7 +42,7 @@ export default {async fetch(request,env,ctx){
    return new Response(body,{status:response.status,headers:h});
  }
  if(request.method==='GET'&&url.pathname==='/supplier/yacout-marrakech-review'){
-   const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx);const base=shellWith(await shell.text(),yacoutReview(),yacoutCss);const h=new Headers(shell.headers);h.set('cache-control','no-store');h.set('x-robots-tag','noindex, nofollow');return new Response(base,{status:200,headers:h});
+   const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx);const base=shellWith(await shell.text(),yacoutReview(),yacoutCss);const h=new Headers(shell.headers);h.set('cache-control','no-store');const csp=h.get('content-security-policy');if(csp)h.set('content-security-policy',csp.replace('https://res.cloudinary.com','https://res.cloudinary.com https://yacout-tours.com'));h.set('x-robots-tag','noindex, nofollow');return new Response(base,{status:200,headers:h});
  }
  if(request.method==='GET'&&(url.pathname==='/'||url.pathname==='/explore')){
    const shell=await app.fetch(new Request(new URL('/partners',url),request),env,ctx);let base=await shell.text();
